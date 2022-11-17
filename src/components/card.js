@@ -1,4 +1,40 @@
+import { headerAppender } from "./header";
+
 const Card = (article) => {
+
+  const card = document.createElement(`div`);
+  const headline = document.createElement(`div`);
+  const authorContainer = document.createElement(`div`);
+  const imgContainer = document.createElement(`div`);
+  const img = document.createElement(`img`);
+  const authorName = document.createElement(`span`);
+
+  card.classList.add(`card`);
+  headline.classList.add(`headline`);
+  authorContainer.classList.add(`author`);
+  imgContainer.classList.add(`img-container`);
+  
+  headline.textContent = article.headline;
+  img.src = article.authorPhoto;
+  img.alt = `Author Photo`;
+  authorName.textContent = article.authorName;
+
+  card.appendChild(headline);
+  card.appendChild(authorContainer);
+  authorContainer.appendChild(imgContainer);
+  imgContainer.appendChild(img);
+  authorContainer.appendChild(authorName);
+
+  card.addEventListener(`click`, e => {
+    console.log(card.headline);
+  })
+
+  return card;
+
+
+  
+  
+  
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
