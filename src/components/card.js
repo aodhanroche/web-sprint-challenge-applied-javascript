@@ -57,17 +57,23 @@ const Card = (article) => {
 
 const cardAppender = (selector) => {
   
-  axios.get(`http://localhost:5001/api/articles`);
-  .then(resp => {
-    document.querySelector(selector).appendChild(Card(resp.data.articles));
-
-  })
-  .catch(err => console.error(err))
+ axios.get(`http://localhost:5001/api/articles`)
+ .then(resp => {
+  document.querySelector(selector).appendChild(Card(resp.data.articles.bootstrap));
+  document.querySelector(selector).appendChild(Card(resp.data.articles.javascript));
+  document.querySelector(selector).appendChild(Card(resp.data.articles.jquery));
+  document.querySelector(selector).appendChild(Card(resp.data.articles.node));
+  document.querySelector(selector).appendChild(Card(resp.data.articles.technology));
+  
+  console.log(resp.data.articles);
+  console.log(`Its Working in here`)
+ })
+ .catch(err => console.error(err))
 
 }
 
   // TASK 6
-  // ----------------
+  // ---------------
   // Implement this function that takes a css selector as its only argument.
   // It should obtain articles from this endpoint: `http://localhost:5001/api/articles` (test it with console.log!!).
   // However, the articles do not come organized in a single, neat array. Inspect the response closely!
