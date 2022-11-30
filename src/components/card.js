@@ -59,14 +59,28 @@ const cardAppender = (selector) => {
   
  axios.get(`http://localhost:5001/api/articles`)
  .then(resp => {
-  document.querySelector(selector).appendChild(Card(resp.data.articles.bootstrap));
-  document.querySelector(selector).appendChild(Card(resp.data.articles.javascript));
-  document.querySelector(selector).appendChild(Card(resp.data.articles.jquery));
-  document.querySelector(selector).appendChild(Card(resp.data.articles.node));
-  document.querySelector(selector).appendChild(Card(resp.data.articles.technology));
+
+console.log(resp.data.articles)
+
+  for(let i = 0; i < resp.data.articles.bootstrap.length; i++){
+  document.querySelector(selector).appendChild(Card(resp.data.articles.bootstrap[i]));
+  }
+  for(let i = 0; i < resp.data.articles.javascript.length; i++){
+    document.querySelector(selector).appendChild(Card(resp.data.articles.javascript[i]));
+    }
+  for(let i = 0; i < resp.data.articles.jquery.length; i++){
+  document.querySelector(selector).appendChild(Card(resp.data.articles.jquery[i]));
+  }
+  for(let i = 0; i < resp.data.articles.node.length; i++){
+    document.querySelector(selector).appendChild(Card(resp.data.articles.node[i]));
+  }
+  for(let i = 0; i < resp.data.articles.technology.length; i++){
+    document.querySelector(selector).appendChild(Card(resp.data.articles.technology[i]));
+    }
+
   
-  console.log(resp.data.articles);
-  console.log(`Its Working in here`)
+  console.log(resp.data.articles.bootstrap);
+  console.log(`Its working in here`)
  })
  .catch(err => console.error(err))
 
